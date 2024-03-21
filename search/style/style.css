@@ -1,75 +1,57 @@
-div{
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 28px;
-    font-weight:bold;
-    border: 3px solid black;
-}
-table{
-    border: 2px solid black;
-    border-collapse: collapse;
-}
-td, th{
-    border: 2px solid red;
-    
+.index-header{
+    text-align: right;
 }
 
-#foo{
-    color:blue;
-}
-h1:hover{
-    color:red;
-}
-button{
-    height:50px;
-    width:200px;
-    background-color: green;
-    color :white;
-    font-weight: bold;
-}
-button:hover{
-    background-color: blue; 
+.index-header a{
+    padding: 5px;
+    text-decoration: none;
+    color:rgb(0, 0, 0, .87);
+
 }
 
-@media (min-width: 600px){
-    body{
-        background-color: orange;
-    }
-}
-@media (max-width: 599px){
-    body{
-        background-color:blue;
-    }
-}
-#container {
-    display: flex;
-    flex-wrap: wrap
+.index-header a:hover{
+    text-decoration: underline;
 }
 
-#container > div{
-    background-color: springgreen;
-    font-size: 20px;
-    width: 200px;
-    margin: 20px;
-    padding: 20px;
+.index-header img{
+    border-radius: 200px;
+    height: 30px;
+    /* padding: 5px; */
+    margin: 10px;
+}
+.normal-search{
+    margin: 200px;
+    text-align: center;
 }
 
-#grid{
-    background-color: green;
-    padding: 20px;
-    display:grid;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-    grid-template-columns: 200px 200px 200px 200px auto;
+.normal-search img{
+    height: 100px;
 }
 
-.grid-item{
-    background-color: white;
-    font-size: 20px;
-    padding:20px;
-    
+.search-input{
+    margin: 30px;
+    height: 40px;
+    width: 500px;
+    border-radius: 50px;
+    border: solid rgb(236, 236, 236) 3px;
+    outline: none;
+    /* box-shadow: 100px 100px 100px 100px rgb(255, 2, 2); */
+
 }
 
-/* tailwind css */
-/* react */
-/* nodejs */
-/* learn with sumit react js */
+.search-input:focus{
+    border: solid  #4285F4 3px;
+}
+
+input[type='text'] {
+    -moz-box-shadow: 0px 0px 4px #ffffff;
+    -webkit-box-shadow: 0px 0px 4px #ffffff;
+    box-shadow: 0px 0px 5px 1px #adabab;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    margin: 0px 10px 10px 20px;
+
+}
