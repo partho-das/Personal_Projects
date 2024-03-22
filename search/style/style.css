@@ -34,9 +34,10 @@ div{
     height: 100px;
 }
 .search-bar{
+    position: relative;
     border-radius: 100px;
     width: 550px;
-    height: 60px;
+    height: 50px;
     margin: 20px;
     box-shadow: 0px 0px 5px 1px #adabab;
     padding: 0px;
@@ -49,6 +50,11 @@ div{
     height: 100%;
     /* display: inline-block; */
     font-size: 20px;
+}
+
+.material-symbols-outlined{
+    position: relative;
+    top: 5px;
 }
 
 

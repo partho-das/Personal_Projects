@@ -37,7 +37,10 @@ label{
     display: inline-block;
     width: 250px;
 }
-
+input[type='text']{
+    width: 400px;
+    border-radius: 5px;
+}
 input:focus{
     outline-color:#4d90fe;
 }
