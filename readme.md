@@ -67,3 +67,4 @@ The Link to Google: [Google Bot Kom](https://google.com)
 
 - [x] partho :tada:
 - [ ] box
+- [ ] Issue #739
