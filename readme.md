@@ -18,3 +18,30 @@ _I am fine_ [This is Italic] also this *bingo*
 Qouting my name.
 > Partho Protim Das
 
+This is a code
+
+`Shoot I am fine`
+```cpp
+#include<stdio.h>
+
+int main(){
+    int a, b;
+    sc3(a, b, c);
+
+    for(int i = 0; i < n; i++){
+        int sum = 0;
+        sum += i;
+    }
+    return 0;
+}
+```
+
+Here is a simple flow chart:
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
