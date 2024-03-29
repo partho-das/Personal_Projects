@@ -73,7 +73,7 @@ The Link to Google: [Google Bot Kom](https://google.com)
 > Please Note That
 
 
-> [!TIPS]
+> [!TIP]
 > Tips of the day
 
 > [!IMPORTANT]
