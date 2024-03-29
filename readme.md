@@ -47,3 +47,6 @@ graph TD;
     A-->A;
     D-->A;
 ```
+
+
+he background color is `#ffffff` for light mode and `#000000` for dark mode.
