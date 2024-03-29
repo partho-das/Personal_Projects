@@ -49,4 +49,21 @@ graph TD;
 ```
 
 
-he background color is `#ffffff` for light mode and `#000000` for dark mode.
+The background color is `#ffffff` for light mode and `#000000` for dark mode.
+
+The Link to Google: [Google Bot Kom](https://google.com)
+
+
+* Bluey
+- Bingo
++ Pom Pom
+
+* Bluey
+  * Bingo
+    * Pom Pom
+
+100. No Line
+     * Do Not Worry
+
+- [x] partho :tada:
+- [ ] box
