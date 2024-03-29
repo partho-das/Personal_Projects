@@ -68,3 +68,17 @@ The Link to Google: [Google Bot Kom](https://google.com)
 - [x] partho :tada:
 - [ ] box
 - [ ] Issue #739
+
+> [!NOTE]
+> Please Note That
+> [!TPS]
+> Tips of the day
+
+> [!IMPORTANT]
+> This is important
+
+> [!WARNING]
+> Please go to Sleep
+
+> [!CAUTION]
+> Turn of the light
