@@ -2,13 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from encyclopedia import util
+from random import randint
  
 # Create your views here.
 
 
 def index(request):
     return HttpResponseRedirect(reverse("encyclopedia:index"))
-
 
 def create_page(request):
     if request.method == "POST":
@@ -23,7 +23,7 @@ def create_page(request):
 def edit_page(request):
     if request.method == "GET":
         title = request.GET.get('title')
-        content = util.update_entry(title)
+        content = util.get_entry(title)
         return render(request, "query/edit_page.html", {
             'title' : title,
             'content' : content
@@ -36,9 +36,27 @@ def edit_page(request):
 
 
 def random_page(request):
-    return render(request, "query/random_page.html")
+    list = util.list_entries()
+    
+    rnum = randint(0, len(list) - 1)
+    return HttpResponseRedirect(reverse('encyclopedia:show_page', args=[list[rnum]]))
 
 def search(request):
+    lists = util.list_entries()
     key = request.GET.get('q')
-    print(key)
+    subStrList = [ ]
+    for entry in lists:
+        if entry == key:
+            return HttpResponseRedirect(reverse('encyclopedia:show_page', args =[entry]))
+
+    for entry in lists:
+        if key in entry:
+            subStrList.append(entry)
+    
+    return render(request, 'encyclopedia/index.html', {
+        "entries" : subStrList
+    })
+            
+
+    
     return render(request, "query/search.html")

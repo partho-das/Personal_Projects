@@ -10,7 +10,7 @@
 <form action="{%url 'query:edit_page' %}" method="POST">
     {%csrf_token%}
     <div>
-        <input class = "title-box" type="hidden" placeholder="Title of entry" name = "title" value = {{title}}>
+        <h2> Title: {{title}} </h2>
     </div>
     <div>
         <textarea class = "markdown-box" placeholder="Please type your content. Format: (MarkDown)" name = "content">{{content}}</textarea>
