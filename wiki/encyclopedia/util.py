@@ -2,6 +2,7 @@ import re
 
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+from django.http import HttpResponse
 
 
 def list_entries():
@@ -13,7 +14,22 @@ def list_entries():
                 for filename in filenames if filename.endswith(".md")))
 
 
+
 def save_entry(title, content):
+    """
+    Saves an encyclopedia entry, given its title and Markdown
+    content. If an existing entry with the same title already exists,
+    it is replaced.
+    """
+    filename = f"entries/{title}.md"
+    if default_storage.exists(filename):
+        print("how the")
+        return HttpResponse("Title Already Exiest!")
+    default_storage.save(filename, ContentFile(content))
+    
+    
+
+def update_entry(title, content):
     """
     Saves an encyclopedia entry, given its title and Markdown
     content. If an existing entry with the same title already exists,
@@ -26,7 +42,6 @@ def save_entry(title, content):
 
 
 def get_entry(title):
-    
     """
     Retrieves an encyclopedia entry by its title. If no such
     entry exists, the function returns None.

@@ -1,4 +1,4 @@
-body {
+/* body {
     margin: 0;
     background-color: white;
 }
@@ -39,17 +39,16 @@ textarea {
 
 
 .title-box{
-    width: 400px;   
+    width: 400px;
+    color: blue;
 }
 
+
+.header{
+    color: pink;
+}
 
 .markdown-box{
-
-    margin-top: 50px;
     width: 400px;
     height: 300px;
-}
-
-.submit-box{
-    margin-top: 20px;
-}
+} */

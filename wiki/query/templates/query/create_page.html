@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create Page
+{% endblock %}
+
+{% block body %}
+    <h1 class = "header">Create New Entry</h1>
+
+<form action="{%url 'query:create_page' %}" method="POST">
+    {%csrf_token%}
+    <div>
+        <input class = "title-box" type="text" placeholder="Title of entry" name = "title">
+    </div>
+    <div>
+        <textarea class = "markdown-box" placeholder="Please type your content. Format: (MarkDown)" name = "content" ></textarea>   </div>
+    <div>
+        <input class = "submit-box" type="submit" value = "Submit Query">
+    </div>
+</form>
+
+{% endblock %}
