@@ -39,14 +39,14 @@ textarea {
 
 
 .title-box{
-    width: 500px;   
+    width: 50%;   
 }
 
 
 .markdown-box{
 
     margin-top: 50px;
-    width: 500px;
+    width: 50%;
     height: 300px;
 }
 

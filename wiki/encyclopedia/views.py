@@ -5,7 +5,6 @@ import markdown
 
 
 def index(request):
-    print("hi")
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
     })
@@ -14,11 +13,14 @@ def show_page(request, title):
 
     try:
         # print(util.get_entry(title), "hi")
-        passage = markdown.markdown( util.get_entry(title) )
+        content = markdown.markdown( util.get_entry(title) )
     except AttributeError:
-        passage = markdown.markdown("# Noting Found! No This Entrie")
+        return render(request, "encyclopedia/massage.html",{
+        'title' : 'No Page Found',
+        'massage': 'Error 404! Nothing Found On This Entry'
+    })
     
     return render(request, "encyclopedia/showpage.html", {
-        'content' : passage,
+        'content' : content,
         'title' : title
     })

@@ -1,5 +1,4 @@
 
-
 **how the hack** [ Bold text] __This is also Bold Text__
 
 # This is Heading 1
@@ -94,7 +93,6 @@ The Link to Google: [Google Bot Kom](https://google.com)
 | Cell 1   | Cell 2   | Cell 3   |
 | Cell 4   | Cell 5   | Cell 6   |
 | Cell 7   | Cell 8   | Cell 9   |
-|----------|----------|----------|
 | Cell 8   | Cell 11  | Cell 12  | 
 
 

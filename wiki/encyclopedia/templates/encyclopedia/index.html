@@ -12,7 +12,12 @@
             <li> 
                 <a href="{% url 'encyclopedia:show_page' title=entry %}"> {{entry}} </a>
             </li>
+            {%empty%}
+            <li>
+                Entry List is Empty!
+            </li>
         {% endfor %}
+
     </ul>
 
 {% endblock %}

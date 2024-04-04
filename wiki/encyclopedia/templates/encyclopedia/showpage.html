@@ -10,8 +10,8 @@
 
     <div>
         <form method = "GET" action = " {%url 'query:edit_page'%}"> {%csrf_token%}
-            <input type="hidden" name="title" value={{title}}>
-            <input type = "submit" value = "Update Content">
+            <input type="hidden" name="title" value="{{title}}">
+            <input class = "btn btn-primary" type = "submit" value = "Update Content">
         </form>
     </div>    
 {% endblock %}

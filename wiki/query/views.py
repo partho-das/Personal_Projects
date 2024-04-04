@@ -15,7 +15,7 @@ def create_page(request):
         title = request.POST.get("title")
         content = request.POST.get("content")
         if util.get_entry(title) is not None:
-            return HttpResponse("<h1>Title Already Exist</h1>")
+            return HttpResponse("<h1>Error: An Entry Already Exist With This Title</h1>")
         util.save_entry(title, content)
         return HttpResponseRedirect(reverse("encyclopedia:index"))  
     return render(request, "query/create_page.html")
@@ -24,6 +24,7 @@ def edit_page(request):
     if request.method == "GET":
         title = request.GET.get('title')
         content = util.get_entry(title)
+        print(f"Title : {title}")
         return render(request, "query/edit_page.html", {
             'title' : title,
             'content' : content
@@ -31,6 +32,13 @@ def edit_page(request):
     
     title = request.POST.get("title")
     content = request.POST.get("content")
+    operation = request.POST.get("operation")
+    if operation == "Delete Entry":
+        util.delete_entry(title)
+        return render(request, 'encyclopedia/massage.html', {
+            'title':'Entry Deleted',
+            'massage':"Entry Deleted Successfully!"
+        })
     util.save_entry(title, content)
     return HttpResponseRedirect(reverse('encyclopedia:show_page', args = [title]))
 
@@ -45,13 +53,13 @@ def search(request):
     lists = util.list_entries()
     key = request.GET.get('q')
     subStrList = [ ]
-    for entry in lists:
-        if entry == key:
-            return HttpResponseRedirect(reverse('encyclopedia:show_page', args =[entry]))
+    for title in lists:
+        if title == key:
+            return HttpResponseRedirect(reverse('encyclopedia:show_page', args =[title]))
 
-    for entry in lists:
-        if key in entry:
-            subStrList.append(entry)
+    for title in lists:
+        if key in title:
+            subStrList.append(title)
     
     return render(request, 'encyclopedia/index.html', {
         "entries" : subStrList

@@ -1,1 +1,0 @@
-Normal <fuck>Fuck</fuck>
