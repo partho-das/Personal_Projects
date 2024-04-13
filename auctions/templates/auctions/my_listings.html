@@ -1,0 +1,55 @@
+{% extends "auctions/layout.html" %}
+
+
+{% block title %}
+    {{header_message}}
+{% endblock %}
+{% block body %}
+    <h2>{{header_message}}</h2>
+
+    <div class="al-listings">
+        {% for listing in listings %}
+            <div class="al-listing-element">
+                <div class="al-image-section">
+                    <a href="{% url 'show_listing' listing.id %}" class="al-title">
+                        <img src="{{listing.image_url}}" class="al-image">
+                    </a>
+                </div>
+                <div class="al-listing-text">
+                    <div class="al-title">
+                        <span>Selling:
+                        </span>
+                        <a href="{% url 'show_listing' listing.id %}" class="al-title">{{listing.title|capfirst}}</a>
+                    </div>
+                    <div class="al-status">
+                        <span>Status:
+                        </span>
+                        {% if listing.is_live == True %}
+                            <span>(Active)
+                            </span>
+                        {% else %}
+                            <span>(Closed)
+                            </span>
+                        {% endif %}
+                    </div>
+                    <div class="al-price">
+                        <b>Price:</b>
+                            {{listing.asking_price}}$
+                    </div>
+                    <div class="al-best-bid">
+                        <b>Best Bid:</b>
+                            {% if listing.bidding.all.count %}
+                                {{ listing.bidding.all.last.offer_price }}$
+                            {% else %}
+                                No Bidding Yet!
+                            {% endif %}
+                    </div>
+                    <div style="color:gray"> <b>Category: {{listing.get_category_label}}</b></div>
+                    <div class="al-datetime">Created on:
+                        {{listing.time}}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="footer">End of the Page, There are No Listing !</div>
+{% endblock %}
