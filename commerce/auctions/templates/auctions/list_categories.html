@@ -1,0 +1,20 @@
+{% extends 'auctions/layout.html' %}
+
+
+{% block title %}
+    Categories
+{% endblock %}
+
+{% block body %}
+<div class="list-group all-list-categories">
+    <a href="{% url 'category_listing' %}" class=" list-categories list-group-item list-group-item-action list-group-item-info">No Category</a>  
+    {% for value, label in categories %}
+        {% if not forloop.counter|divisibleby:2 %}
+            <a href="{% url 'category_listing' value %}" class=" list-categories list-group-item list-group-item-action list-group-item-primary">{{label}}</a>
+        {% else %}
+            <a href="{% url 'category_listing' value %}" class=" list-categories list-group-item list-group-item-action list-group-item-info">{{label}}</a>
+        {% endif %}
+    {% endfor %}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,194 @@
+
+.body {
+    padding: 30px;
+    background-color: aliceblue; 
+}
+
+h2{
+    margin-left: 20px;
+}
+.al-image{
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+}
+.al-listing-element{
+    /* background-color: rgb(5, 255, 118); */
+    display: flex;
+    margin: 30px 20% 0px 20%;
+    box-shadow: 0px 0px 5px -2px rgb(0, 0, 0);
+    border-radius: 20px;
+    padding: 10px;
+}   
+
+
+
+.al-listing-text{
+    margin-left: 70px;
+    font-size: 1.2rem;
+    color: rgb(138, 37, 163);
+
+}
+
+.al-listing-text div{
+    padding: 20px;
+    padding-top: 0px;
+}
+
+.al-title{
+    font-weight: bold;
+}
+.al-price{
+    color: rgb(55, 163, 127);
+}
+
+.al-datetime{
+    color: rgb(225, 0, 255);
+}
+
+.al-title{
+    /* text-decoration: none; */
+}
+.footer{
+    display: inline-block;
+    padding: 50px 20px 50px 20px;
+    color: rgb(185, 40, 185);
+    background-color: aliceblue;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+
+
+.al-status{
+    color: rgb(230, 149, 0);
+}
+
+
+/* Show _lisitng */
+.sl-head{
+    display: flex;
+
+    font-size: 1.2rem;
+}
+
+.alert-warning{
+    font-size: 1.2rem;
+}
+.sl-title{
+    padding-right: 20px;
+}
+
+.sl-status{
+    color: rgb(0, 153, 255);
+
+}
+.al-datetime{
+    margin-top: 5px;
+}
+.sl-body{
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    background-color: aliceblue;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px -2px rgb(55, 163, 127);
+
+
+}
+
+.bidding-form{
+    margin-top: 20px;
+}
+.sl-image img{
+    height:300px;
+    border-radius: 20px;
+}
+
+.sl-description-price{
+    flex: 2;
+    padding: 30px;
+    color:rgb(63, 37, 25);
+}
+.sl-description-text{
+    color: rgb(0, 146, 37);
+    padding: 1ppx;
+    white-space: pre-wrap;
+}
+
+.sl-image img{
+    flex: 1;
+}
+.sl-bid{
+    flex: 1;
+    padding: 20px;
+    height: inherit;
+    background-color: rgb(195, 216, 255);
+    border-radius: 20px;
+    margin-bottom: 0px;
+}
+
+.center-btn{
+    margin: 10px;
+    text-align: center;
+}
+.sl-price{
+    display: flex;
+    color: indigo;
+    font-size: 1.2rem;
+}
+.sl-starting-price{
+    flex: 1;
+}
+.sl-current-top{
+    flex: 1;
+    text-align: right;
+    color: rgb(247, 100, 3);
+}
+.al-best-bid{
+    color: rgb(0, 0, 0);
+}
+.bidders{
+    display: flex;
+    padding: 5px;
+}
+
+.bidders div{
+    padding: 5px;
+}
+.bidders .bid-price{
+    flex: 1;
+}
+.bidders .bid-user{
+    flex: 1;
+}
+
+/* Comment */
+
+.sl-comment{
+    margin: 50px 30% 0px 30%;
+}
+.unit-comment{
+    margin-top: 20px;
+    background-color: rgb(213, 213, 248);
+    /* border: 1px solid black; */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px 2px rgb(187, 255, 246);
+}
+
+.sl-user-category{
+    margin-top: 20px;
+}
+
+.all-list-categories{
+    margin: 10px 40% 0px 40%;
+    text-align: center;
+}
+
+.all-list-categories a{
+    border-radius: 10px;
+    margin: 10px 0px 10px 0px;
+    box-shadow: 0px 0px 4px -2px rgb(0, 0, 0);
+
+}
