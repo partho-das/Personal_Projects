@@ -5,4 +5,4 @@ In **encyclopedia/views.py**, there are only two functions:
 2. **show_page**: which showcases the content of the entries.
 
 In the **query app**, all the magic happens.  Functions such as **create_page, edit_page, random_page, and search** are listed in **query/views.py**.
-If you visit **query/views.py**, you'll find all of them listed there.
+If you visit **query/views.py**, you'll find all of them there.
