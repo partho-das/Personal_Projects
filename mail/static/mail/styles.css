@@ -1,0 +1,93 @@
+textarea {
+  min-height: 400px;
+}
+body {
+  margin-bottom: 50px;
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+    margin-top: 20px;
+    line-height: 100%;
+    padding: 10px;
+  }
+  75% {
+    opacity: 0;
+    margin-top: 20px;
+    line-height: 100%;
+    padding: 10px;
+  }
+  100% {
+    opacity: 0;
+    margin-top: 0px;
+    line-height: 0%;
+    padding: 0px;
+  }
+}
+
+.mail-list {
+  box-shadow: 0px 2px 5px -1px blue;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+
+  animation-name: hide;
+  animation-direction: forwards;
+  animation-duration: 1s;
+  /* animation-iteration-count: infinite; */
+  animation-play-state: paused;
+}
+
+.mail-list-subject {
+  flex: 1;
+  font-weight: bold;
+}
+.mail-list-body {
+  flex: 4;
+}
+
+.mail-list:hover {
+  /* text-decoration: underline; */
+  background-color: aliceblue;
+  cursor: pointer;
+}
+.mail-list-archive {
+  margin-left: 50px;
+}
+
+#email-view {
+  background-color: aliceblue;
+  padding: 20px;
+  border-radius: 10px;
+}
+#email-view > div,
+#email-view > pre {
+  padding: 20px;
+}
+.email-view-title {
+  display: flex;
+  justify-content: space-between; /* Align items along the main axis, distributing space between them */
+  align-items: center; /* Align items along the cross axis */
+}
+
+.email-view-sender {
+  font-weight: bold;
+  color: purple;
+}
+.email-view-timestamp {
+  color: red;
+}
+
+.email-view-subject,
+.email-view-bodyheading {
+  font-weight: bold;
+}
+
+.email-view-body {
+  background-color: rgb(229, 236, 238);
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px -1px blue;
+  margin-bottom: 20px;
+}
