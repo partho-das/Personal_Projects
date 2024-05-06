@@ -11,11 +11,43 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", () => load_mailbox("archive"));
   document.querySelector("#compose").addEventListener("click", compose_email);
 
+  document
+    .querySelector("#compose-form")
+    .addEventListener("submit", (event) => {
+      submit_email(event);
+    });
+
   // By default, load the inbox
   load_mailbox("inbox");
 });
 
+function submit_email(event) {
+  event.preventDefault();
+
+  console.log("Submitted");
+  let replay_dash = "-".repeat(20) + "Previous Messages" + "-".repeat(20);
+  body = document.querySelector("#compose-body").value;
+  body = body.replace(replay_dash, "");
+
+  fetch(`/emails`, {
+    method: "POST",
+    body: JSON.stringify({
+      recipients: document.querySelector("#compose-recipients").value,
+      subject: document.querySelector("#compose-subject").value,
+      body: body,
+    }),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      if (!result.error) load_mailbox("sent");
+      else {
+        alert(result.error);
+      }
+    });
+}
+
 function compose_email(event, recipients = "", subject = "", body = "") {
+  document.querySelector("#message-view").innerHTML = "";
   // Show compose view and hide other views
   document.querySelector("#emails-view").style.display = "none";
   document.querySelector("#email-view").style.display = "none";
@@ -25,26 +57,6 @@ function compose_email(event, recipients = "", subject = "", body = "") {
   document.querySelector("#compose-recipients").value = recipients;
   document.querySelector("#compose-subject").value = subject;
   document.querySelector("#compose-body").value = body;
-
-  document
-    .querySelector("#compose-form")
-    .addEventListener("submit", (event) => {
-      event.preventDefault();
-
-      fetch(`/emails`, {
-        method: "POST",
-        body: JSON.stringify({
-          recipients: document.querySelector("#compose-recipients").value,
-          subject: document.querySelector("#compose-subject").value,
-          body: document.querySelector("#compose-body").value,
-        }),
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          console.log(result);
-          load_mailbox("sent");
-        });
-    });
 }
 
 function load_mailbox(mailbox) {
@@ -52,13 +64,13 @@ function load_mailbox(mailbox) {
   document.querySelector("#emails-view").style.display = "block";
   document.querySelector("#email-view").style.display = "none";
   document.querySelector("#compose-view").style.display = "none";
+  document.querySelector("#message-view").innerHTML = "";
 
   // Show the mailbox name
   let email_view = document.querySelector("#emails-view");
   email_view.innerHTML = `<h3>${
     mailbox.charAt(0).toUpperCase() + mailbox.slice(1)
   }</h3>`;
-
   fill_mailbox(email_view, mailbox);
 }
 
@@ -112,12 +124,24 @@ function fill_mailbox(email_view, mailbox) {
               archived: event.target.innerHTML == "Archive" ? true : false,
             }),
           });
-          event.target.parentNode.style.display = "none";
+          // console.log(event.target.parentNode.style.animationPlayState);
+          event.target.parentNode.style.animationPlayState = "running";
+          event.target.parentNode.addEventListener("animationend", () => {
+            event.target.parentNode.style.display = "none";
+          });
+
           event.stopPropagation();
         });
       });
+      if (emails.length === 0) {
+        // console.log("HI");
+        let message = document.createElement("div");
+        message.innerHTML = "Empty List!";
+        document.querySelector("#message-view").append(message);
+      }
     });
 }
+
 function open_email(id) {
   document.querySelector("#emails-view").style.display = "none";
   let email_view = document.querySelector("#email-view");
@@ -185,7 +209,13 @@ function email_replay(email) {
   if (subject.substring(0, 3) != "Re:") {
     subject = "Re: " + subject;
   }
-  let body = `On ${email.timestamp} ${email.sender} Wrote:\n${email.body}`;
+  let replay_dash =
+    "\n".repeat(5) +
+    "-".repeat(20) +
+    "Previous Messages" +
+    "-".repeat(20) +
+    "\n".repeat(1);
+  let body = `${replay_dash}On ${email.timestamp} ${email.sender} Wrote:\n${email.body}`;
 
   console.log(email.subject);
   //   return;
