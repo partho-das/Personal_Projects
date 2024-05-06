@@ -1,0 +1,62 @@
+textarea {
+  min-height: 400px;
+}
+
+.mail-list {
+  box-shadow: 0px 2px 5px -1px blue;
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+}
+
+.mail-list-subject {
+  flex: 1;
+  font-weight: bold;
+}
+.mail-list-body {
+  flex: 4;
+}
+
+.mail-list:hover {
+  /* text-decoration: underline; */
+  background-color: aliceblue;
+}
+.mail-list-archive {
+  margin-left: 50px;
+}
+
+#email-view {
+  background-color: aliceblue;
+  padding: 20px;
+  border-radius: 10px;
+}
+#email-view > div,
+#email-view > pre {
+  padding: 20px;
+}
+.email-view-title {
+  display: flex;
+  justify-content: space-between; /* Align items along the main axis, distributing space between them */
+  align-items: center; /* Align items along the cross axis */
+}
+
+.email-view-sender {
+  font-weight: bold;
+  color: purple;
+}
+.email-view-timestamp {
+  color: red;
+}
+
+.email-view-subject,
+.email-view-bodyheading {
+  font-weight: bold;
+}
+
+.email-view-body {
+  background-color: rgb(229, 236, 238);
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px -1px blue;
+  margin-bottom: 20px;
+}
