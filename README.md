@@ -1,10 +1,8 @@
 # CS50 WEB PROGRAMMING FINAL PROJECT: RESULT INSIGHT
 
-# Result Insight: CSE Department Performance Analytics
+## Result Insight: Result Analytics Website
 
 [![Project Video](https://img.youtube.com/vi/8DYJvP8mj5k/0.jpg)](https://youtu.be/8DYJvP8mj5k)
-
-## Revolutionizing CSE Department Analytics: Personalized Insights, Session-wise Rankings, and Data-Driven Decisions
 
 Result Insight is a web application built with Django and Next.js that empowers the CSE Department, students, and faculty with valuable insights into academic performance, trends, and opportunities for improvement. It goes beyond typical student information systems by providing interactive features and data visualizations.
 
@@ -176,5 +174,3 @@ We welcome contributions! Feel free to submit issues, pull requests, or suggesti
 - CS50 Web Programming with Python and JavaScript course
 - Django and Next.js communities
 - University data sources
-
-**Result Insight: Empowering data-driven decisions in the CSE Department.**
