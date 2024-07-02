@@ -165,9 +165,6 @@ This project stands out because it combines complex data visualization and analy
 - **user/profile/page.js:** User profile page.
 - **utils:** Utility functions for authentication, data fetching, posting, and subject management.
 
-## Contributing:
-
-We welcome contributions! Feel free to submit issues, pull requests, or suggestions to improve Result Insight.
 
 ## Acknowledgments:
 
