@@ -1,5 +1,5 @@
-# Ignore virtual environments
+# Ignore Python virtual environments
 .venv/
 
-# Ignore statement PDF files
+# Ignore statement PDF files to protect user privacy
 statement.pdf
