@@ -29,7 +29,7 @@ def extract_data_from_pdf(pdf_path):
                     detail_data.append(row)
 
         detail_data.reverse()
-        detail_data.insert(0, ["Date(From - To)", "Transaction", "Consumption Units(kWh)", "Cost Per/Unit", "Amount", "Current Balance", "My Current Balance"])
+        detail_data.insert(0, ["Date(From - To)", "Transaction", "Consumption Units(kWh)", "Cost Per/Unit", "Amount", "System Current Balance", "Calculated Current Balance"])
         return detail_data
     
 def create_monthly_summary(detail_data):
@@ -91,4 +91,4 @@ write_data_to_csv("bill_details.csv", detail_data)
 
 monthly_summary = create_monthly_summary(detail_data)
 monthly_summary_list = [{"Month": month, **data} for month, data in monthly_summary.items()]
-write_data_to_csv("monthly_bill_summary.csv", monthly_summary_list, fieldnames=["Month", "Total Consumption Units(kWh)","Total Cost Per/Unit", "Total Bill", "Total Rebate", "Total VAT", "Total Recharge"])
+write_data_to_csv("monthly_bill_summary.csv", monthly_summary_list, fieldnames=["Month", "Total Consumption Units(kWh)","Total Cost Per/Unit", "Total Bill", "Total Recharge", "Total Rebate", "Total VAT"])

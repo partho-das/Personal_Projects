@@ -1,4 +1,4 @@
-Date(From - To),Transaction,Consumption Units(kWh),Cost Per/Unit,Amount,Current Balance,My Current Balance
+Date(From - To),Transaction,Consumption Units(kWh),Cost Per/Unit,Amount,System Current Balance,Calculated Current Balance
 2024-07-09 - 2024-07-09,Charge,11.13,7.0,77.91,-598.52,-598.52
 2024-07-08 - 2024-07-08,Charge,10.61,5.26,55.81,-520.61,-520.61
 2024-07-07 - 2024-07-07,Charge,7.98,5.26,41.97,-464.8,-464.8
