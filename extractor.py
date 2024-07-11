@@ -52,7 +52,7 @@ def create_monthly_summary(detail_data):
             monthly_summary[month_year] = {
                 "Total Consumption Units(kWh)": 0,
                 "Total Bill": 0,
-                "Cost Per/Unit": 0,
+                "Total Cost Per/Unit": 0,
                 "Total Rebate": 0,
                 "Total VAT": 0,
                 "Total Recharge": 0,
@@ -71,8 +71,8 @@ def create_monthly_summary(detail_data):
         monthly_summary[month_year]["Total Consumption Units(kWh)"] += unit
         monthly_summary[month_year]["Total Consumption Units(kWh)"] = round(monthly_summary[month_year]["Total Consumption Units(kWh)"], 2)
 
-        monthly_summary[month_year]["Cost Per/Unit"] = monthly_summary[month_year]["Total Bill"] / monthly_summary[month_year]["Total Consumption Units(kWh)"]
-        monthly_summary[month_year]["Cost Per/Unit"] = round(monthly_summary[month_year]["Cost Per/Unit"], 2)
+        monthly_summary[month_year]["Total Cost Per/Unit"] = monthly_summary[month_year]["Total Bill"] / monthly_summary[month_year]["Total Consumption Units(kWh)"]
+        monthly_summary[month_year]["Total Cost Per/Unit"] = round(monthly_summary[month_year]["Total Cost Per/Unit"], 2)
         
     return monthly_summary
 
@@ -91,4 +91,4 @@ write_data_to_csv("bill_details.csv", detail_data)
 
 monthly_summary = create_monthly_summary(detail_data)
 monthly_summary_list = [{"Month": month, **data} for month, data in monthly_summary.items()]
-write_data_to_csv("monthly_bill_summary.csv", monthly_summary_list, fieldnames=["Month", "Total Consumption Units(kWh)","Cost Per/Unit", "Total Bill", "Total Rebate", "Total VAT", "Total Recharge"])
+write_data_to_csv("monthly_bill_summary.csv", monthly_summary_list, fieldnames=["Month", "Total Consumption Units(kWh)","Total Cost Per/Unit", "Total Bill", "Total Rebate", "Total VAT", "Total Recharge"])
