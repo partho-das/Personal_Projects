@@ -1,0 +1,5 @@
+# Ignore virtual environments
+.venv/
+
+# Ignore statement PDF files
+statement.pdf
