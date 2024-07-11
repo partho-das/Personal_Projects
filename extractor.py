@@ -13,7 +13,6 @@ def extract_data_from_pdf(pdf_path):
             tables = page.extract_tables()
             for table in reversed(tables):
                 if page == pdf.pages[0] and table == tables[0]:
-                    print(table)
                     continue  # Skip the last table
                 for row in reversed(table):
                     if row[0] == 'Date(From - To)':  # Skip header row
@@ -41,6 +40,9 @@ def create_monthly_summary(detail_data):
         transaction_type = row[1]
         amount = float(row[4])
 
+        unit = float(row[2]) if row[2] != "NA" else 0
+
+
         match = re.search(r"(\d{4}-\d{2})", date_range_str)
         if not match:
             continue
@@ -48,15 +50,17 @@ def create_monthly_summary(detail_data):
 
         if month_year not in monthly_summary:
             monthly_summary[month_year] = {
-                "Total Consumption": 0,
+                "Total Consumption Units(kWh)": 0,
+                "Total Bill": 0,
+                "Cost Per/Unit": 0,
                 "Total Rebate": 0,
                 "Total VAT": 0,
                 "Total Recharge": 0,
             }
 
         if transaction_type == "Charge":
-            monthly_summary[month_year]["Total Consumption"] += amount
-            monthly_summary[month_year]["Total Consumption"] = round( monthly_summary[month_year]["Total Consumption"], 2)
+            monthly_summary[month_year]["Total Bill"] += amount
+            monthly_summary[month_year]["Total Bill"] = round( monthly_summary[month_year]["Total Bill"], 2)
 
         elif transaction_type == "Rebate Amount":
             monthly_summary[month_year]["Total Rebate"] += amount
@@ -64,6 +68,12 @@ def create_monthly_summary(detail_data):
             monthly_summary[month_year]["Total VAT"] += amount
         elif transaction_type == "Recharge":
             monthly_summary[month_year]["Total Recharge"] += amount
+        monthly_summary[month_year]["Total Consumption Units(kWh)"] += unit
+        monthly_summary[month_year]["Total Consumption Units(kWh)"] = round(monthly_summary[month_year]["Total Consumption Units(kWh)"], 2)
+
+        monthly_summary[month_year]["Cost Per/Unit"] = monthly_summary[month_year]["Total Bill"] / monthly_summary[month_year]["Total Consumption Units(kWh)"]
+        monthly_summary[month_year]["Cost Per/Unit"] = round(monthly_summary[month_year]["Cost Per/Unit"], 2)
+        
     return monthly_summary
 
 def write_data_to_csv(filename, data, fieldnames=None):
@@ -81,4 +91,4 @@ write_data_to_csv("bill_details.csv", detail_data)
 
 monthly_summary = create_monthly_summary(detail_data)
 monthly_summary_list = [{"Month": month, **data} for month, data in monthly_summary.items()]
-write_data_to_csv("monthly_bill_summary.csv", monthly_summary_list, fieldnames=["Month", "Total Consumption", "Total Rebate", "Total VAT", "Total Recharge"])
+write_data_to_csv("monthly_bill_summary.csv", monthly_summary_list, fieldnames=["Month", "Total Consumption Units(kWh)","Cost Per/Unit", "Total Bill", "Total Rebate", "Total VAT", "Total Recharge"])
