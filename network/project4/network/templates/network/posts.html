@@ -1,0 +1,99 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="all-posts">
+        {% block append_body %}{% endblock %}
+        {% for post in Posts %}
+        <div class="post card mb-4 shadow" id="post-{{ post.id }}">
+            <div class="card-header d-flex justify-content-between align-items-center bg-primary text-white">
+                <div class="d-flex justify-content-between w-100">
+                    <a href="/user_profile/{{ post.owner.id }}/" class="post-owner font-weight-bold text-white">{{ post.owner.username }}</a>
+                    <small class="text-white-80">{{ post.timestamp }}</small>
+                    {% if user == post.owner %}
+                        <a href="{% url 'edit_post' id=post.id %}" class="text-black-50">Edit</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-center text-primary">{{ post.title }}</h5>
+                <p class="post-content fs-5 font-weight-bold px-5">{{ post.content }}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+                <div>
+                    <button class="btn btn-sm {% if user in post.liked_by.all %}btn-primary{% else %}btn-outline-primary{% endif %} like-toggle">
+                        {% if user in post.liked_by.all %}
+                        Unlike
+                        {% else %}
+                        Like
+                        {% endif %}
+                    </button>
+                    <span class="like-count ml-2">{{ post.liked_by.count }}</span>
+                </div>
+                <button class="btn btn-sm btn-outline-secondary comment-toggle">Show Comments</button>
+            </div>
+
+            <!-- Comment Section -->
+            <div class="all-comments mt-3 p-3 bg-light rounded" style="display: none;">
+                {% for comment in post.comments.all %}
+                <div class="comment mb-3 p-3 border rounded bg-white">
+                    <div class="comment-header d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="/user_profile/{{ comment.owner.id }}/" class="comment-owner font-weight-bold text-primary">{{ comment.owner.username }}</a>
+                            <small class="text-muted">{{ comment.timestamp }}</small>
+                        </div>
+                    </div>
+                    <pre class="comment-content mt-2 bg-light p-2 rounded">{{ comment.content }}</pre>
+                </div>
+                {% endfor %}
+
+                <!-- Comment Form -->
+                {% if user.is_authenticated %}
+                <form action="{% url 'add_comment' post.id %}" method="POST" class="mt-3">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <textarea class="form-control" name="comment" rows="3" placeholder="Write a comment..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Comment</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if Posts|length is not 0 %}
+    <nav aria-label="Page navigation" class="mt-3">
+        <ul class="pagination justify-content-center">
+            <li class="page-item {% if not Posts.has_previous %}disabled{% endif %}">
+                <a class="page-link" href="?page=1" tabindex="-1">&laquo; First</a>
+            </li>
+            {% if Posts.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ Posts.previous_page_number }}">{{ Posts.previous_page_number }}</a>
+            </li>
+            {% endif %}
+            <li class="page-item active">
+                <a class="page-link" href="?page={{ Posts.number }}">{{ Posts.number }}<span class="sr-only">(current)</span></a>
+            </li>
+            {% if Posts.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ Posts.next_page_number }}">{{ Posts.next_page_number }}</a>
+            </li>
+            {% endif %}
+            <li class="page-item {% if not Posts.has_next %}disabled{% endif %}">
+                <a class="page-link" href="?page={{ Posts.paginator.num_pages }}" tabindex="-1">Last &raquo;</a>
+            </li>
+        </ul>
+    </nav>
+    {% else %}
+    <div class="alert alert-primary text-center">No Post created.</div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'network/index.js' %}"></script>
+{% block exp_script %}{% endblock %}
+{% endblock %}

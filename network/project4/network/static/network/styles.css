@@ -1,0 +1,110 @@
+/* Keyframes for the fadeOut animation */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        margin-top: 20px;
+        line-height: 100%;
+        padding: 10px;
+      }
+    75% {
+    opacity: 0;
+    margin-top: 20px;
+    line-height: 100%;
+    padding: 10px;
+    }
+    100% {
+    opacity: 0;
+    margin-top: 0px;
+    line-height: 0%;
+    padding: 0px;
+    }
+}
+
+/* The .people class will be applied to the elements you want to animate */
+.people {
+
+    box-shadow: 0px 2px 5px -1px blue;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px;
+
+    animation-name: fadeOut;
+    animation-duration: 1s; /* Duration of the animation */
+    animation-fill-mode: forwards; /* Keeps the final state */
+    animation-play-state: paused; /* Start in a paused state */
+}
+
+
+/* Custom styles for the layout */
+
+/* Navbar styles */
+.navbar {
+    background-color: #f8f9fa; /* Light grey background */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #007bff; /* Primary color */
+}
+
+.navbar-nav .nav-link {
+    color: #495057; /* Dark grey for links */
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+/* User profile card */
+.user-profile.card {
+    border: 2px solid #007bff; /* Primary color border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.user-profile .card-body {
+    background-color: #f1f1f1; /* Light grey background */
+}
+
+.user-profile .card-title {
+    color: #007bff; /* Primary color for the title */
+    font-size: 1.5rem;
+}
+
+.user-profile .card-text {
+    color: #6c757d; /* Muted text color */
+}
+
+.user-profile .btn-primary {
+    background-color: #007bff; /* Primary color */
+    border: none;
+}
+
+.user-profile .btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Alert messages */
+.message {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1050;
+}
+
+.alert-warning {
+    background-color: #fff3cd; /* Light yellow */
+    color: #856404; /* Dark yellow text */
+}
+
+.alert-danger {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red text */
+}
+
+/* Body content */
+.body {
+    padding: 20px;
+}
+

@@ -1,0 +1,19 @@
+{% extends 'network/layout.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container mt-5">
+  <div class="create-post-box p-4 bg-light border rounded shadow-sm">
+    <h3 class="mb-4 text-center">Edit Post</h3>
+    <form action="{% url 'edit_post' id=post.id %}" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        {{ form.as_p }}
+      </div>
+      <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Submit Edit" />
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

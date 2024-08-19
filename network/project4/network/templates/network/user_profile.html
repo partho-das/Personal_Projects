@@ -1,0 +1,40 @@
+{% extends 'network/posts.html' %}
+{% load static %}
+
+{% block header %}
+    <h1 class="text-center mt-4 text-primary">User Profile</h1>
+{% endblock %}
+
+{% block append_body %}
+<div class="d-flex justify-content-center mt-5">
+    <div class="user-profile card border-primary rounded shadow-sm" style="width: 20rem; background-color: #f8f9fa;">
+        <div class="card-body text-center">
+            <h5 class="card-title text-dark">{{ user_profile.username|capfirst }}</h5>
+            <p class="card-text text-muted">{{ user_profile.email }}</p>
+            <p class="card-text">
+                {% if user == user_profile %}
+                <a href="{% url 'following_list' %}" class="text-decoration-none text-primary">Following</a>
+                {% else %}
+                <span class="text-secondary">Following</span>
+                {% endif %}
+                : <span class="font-weight-bold">{{ user_profile.following.all|length }}</span>
+            </p>
+            {% if user.is_authenticated and user_profile != user %}
+            <button class="btn btn-primary f-un-status" onclick="user_profile_follow_unfollow({{ user_profile.id }})">
+                {% if user_profile not in user.following.all %}
+                Follow
+                {% else %}
+                Unfollow
+                {% endif %}
+            </button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<h3 class="text-center mt-4 text-secondary">User Posts</h3>
+{% endblock %}
+
+{% block exp_script %}
+<script src="{% static 'network/user_profile.js' %}"></script>
+{% endblock %}
